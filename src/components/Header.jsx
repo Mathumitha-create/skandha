@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Header({ activePage: propActivePage }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
   const [activeSection, setActiveSection] = useState(propActivePage || 'home');
 
   useEffect(() => {
@@ -10,7 +12,7 @@ export default function Header({ activePage: propActivePage }) {
       return;
     }
 
-    const pathname = window.location.pathname;
+    const pathname = location.pathname;
 
     if (pathname === '/portfolio') {
       setActiveSection('portfolio');
@@ -18,6 +20,10 @@ export default function Header({ activePage: propActivePage }) {
     }
     if (pathname === '/about') {
       setActiveSection('about');
+      return;
+    }
+    if (pathname === '/showreel') {
+      setActiveSection('showreel');
       return;
     }
     if (pathname === '/services') {
@@ -53,7 +59,7 @@ export default function Header({ activePage: propActivePage }) {
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // initial trigger
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [propActivePage]);
+  }, [propActivePage, location.pathname]);
 
   const getLinkClass = (pageName) => {
     return activeSection === pageName
@@ -67,7 +73,7 @@ export default function Header({ activePage: propActivePage }) {
         {/* Left 70%: Logo + Centered Links */}
         <div className="flex items-center justify-between pr-8 w-full md:w-auto">
           {/* Logo Section */}
-          <a href="/#home" className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3">
             <svg className="w-8 h-8 text-black" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <polygon points="50,5 93.3,30 93.3,80 50,95 6.7,80 6.7,30" stroke="currentColor" strokeWidth="10" strokeLinejoin="round" fill="none" />
               <path d="M68,35 L40,35 C32,35 32,48 40,48 L60,52 C68,52 68,65 60,65 L32,65" stroke="currentColor" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" fill="none" />
@@ -76,27 +82,27 @@ export default function Header({ activePage: propActivePage }) {
               <h1 className="text-xs font-extrabold tracking-widest uppercase leading-none text-black">Skandha Studio</h1>
               <p className="text-[8px] font-medium tracking-[0.2em] uppercase text-gray-500 mt-0.5">Aerial Visuals</p>
             </div>
-          </a>
+          </Link>
 
           {/* Navigation Links */}
           <div className="hidden md:flex items-center space-x-8 lg:space-x-10 text-[11px] font-bold uppercase tracking-widest">
-            <a className={getLinkClass('home')} href="/#home">Home</a>
-            <a className={getLinkClass('portfolio')} href="/portfolio">Portfolio</a>
-            <a className={getLinkClass('about')} href="/about">About</a>
-            <a className={getLinkClass('services')} href="/services">Services</a>
-            <a className={getLinkClass('booking')} href="/booking">Booking</a>
-            <a className={getLinkClass('contact')} href="/contact">Contact</a>
+            <Link className={getLinkClass('home')} to="/">Home</Link>
+            <Link className={getLinkClass('portfolio')} to="/portfolio">Portfolio</Link>
+            <Link className={getLinkClass('about')} to="/about">About</Link>
+            <Link className={getLinkClass('services')} to="/services">Services</Link>
+            <Link className={getLinkClass('booking')} to="/booking">Booking</Link>
+            <Link className={getLinkClass('contact')} to="/contact">Contact</Link>
           </div>
         </div>
 
         {/* Right 30%: Booking Button & Mobile Menu Toggle */}
         <div className="flex items-center justify-end space-x-4 md:space-x-6">
-          <a 
-            href="/booking" 
+          <Link 
+            to="/booking" 
             className="hidden md:inline-block bg-black text-white hover:bg-gray-800 transition-colors px-6 py-2.5 rounded-md text-[11px] font-bold uppercase tracking-widest text-center"
           >
             Booking
-          </a>
+          </Link>
           {/* Mobile Menu Toggle Button */}
           <button 
             aria-label="Toggle Menu" 
@@ -118,12 +124,12 @@ export default function Header({ activePage: propActivePage }) {
 
       {/* Mobile Drawer Navigation */}
       <div className={`fixed inset-0 z-40 bg-white/95 backdrop-blur-md flex flex-col justify-center items-center space-y-8 text-sm font-bold uppercase tracking-widest transition-transform duration-300 md:hidden ${isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <a className="text-black text-lg" href="/#home" onClick={() => setIsMobileMenuOpen(false)}>Home</a>
-        <a className="text-black text-lg" href="/portfolio" onClick={() => setIsMobileMenuOpen(false)}>Portfolio</a>
-        <a className="text-black text-lg" href="/about" onClick={() => setIsMobileMenuOpen(false)}>About</a>
-        <a className="text-black text-lg" href="/services" onClick={() => setIsMobileMenuOpen(false)}>Services</a>
-        <a className="text-black text-lg" href="/booking" onClick={() => setIsMobileMenuOpen(false)}>Booking</a>
-        <a className="text-black text-lg" href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</a>
+        <Link className="text-black text-lg" to="/" onClick={() => setIsMobileMenuOpen(false)}>Home</Link>
+        <Link className="text-black text-lg" to="/portfolio" onClick={() => setIsMobileMenuOpen(false)}>Portfolio</Link>
+        <Link className="text-black text-lg" to="/about" onClick={() => setIsMobileMenuOpen(false)}>About</Link>
+        <Link className="text-black text-lg" to="/services" onClick={() => setIsMobileMenuOpen(false)}>Services</Link>
+        <Link className="text-black text-lg" to="/booking" onClick={() => setIsMobileMenuOpen(false)}>Booking</Link>
+        <Link className="text-black text-lg" to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact</Link>
       </div>
     </>
   );

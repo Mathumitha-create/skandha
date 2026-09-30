@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import footerBg from '../assets/footer-bg.png';
 
 const InstagramIcon = (props) => (
@@ -29,7 +30,7 @@ export default function Footer() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col items-center text-center space-y-8">
         {/* Logo & Brand */}
         <div className="flex flex-col items-center space-y-3">
-          <div className="flex items-center space-x-3.5">
+          <Link to="/" className="flex items-center space-x-3.5">
             <svg className="w-10 h-10 text-white" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
               <polygon points="50,5 93.3,30 93.3,80 50,95 6.7,80 6.7,30" stroke="currentColor" strokeWidth="10" strokeLinejoin="round" fill="none" />
               <path d="M68,35 L40,35 C32,35 32,48 40,48 L60,52 C68,52 68,65 60,65 L32,65" stroke="currentColor" strokeWidth="10" strokeLinecap="round" strokeLinejoin="round" fill="none" />
@@ -38,7 +39,7 @@ export default function Footer() {
               <h2 className="text-xl font-bold tracking-[0.2em] uppercase leading-none text-white">Skandha Studio</h2>
               <p className="text-[10px] font-semibold tracking-[0.25em] uppercase text-gray-300 mt-1">Aerial Visuals</p>
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* Subtitle */}
@@ -60,11 +61,11 @@ export default function Footer() {
         {/* Navigation Links with border */}
         <div className="w-full max-w-2xl border-t border-white/10 pt-6">
           <div className="flex flex-wrap justify-center gap-x-12 gap-y-4 text-xs font-semibold tracking-wider text-gray-300">
-            <a href="#home" className="hover:text-white transition-colors">Home</a>
-            <a href="#portfolio" className="hover:text-white transition-colors">Portfolio</a>
-            <a href="#about" className="hover:text-white transition-colors">About</a>
-            <a href="#services" className="hover:text-white transition-colors">Services</a>
-            <a href="#contact" className="hover:text-white transition-colors">Contact</a>
+            <Link to="/" className="hover:text-white transition-colors">Home</Link>
+            <Link to="/portfolio" className="hover:text-white transition-colors">Portfolio</Link>
+            <Link to="/about" className="hover:text-white transition-colors">About</Link>
+            <Link to="/services" className="hover:text-white transition-colors">Services</Link>
+            <Link to="/contact" className="hover:text-white transition-colors">Contact</Link>
           </div>
         </div>
 

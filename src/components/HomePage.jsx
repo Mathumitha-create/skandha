@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Header from './Header';
 import Portfolio from './Portfolio';
 import Showreel from './Showreel';
@@ -49,15 +50,15 @@ export default function HomePage() {
             
             {/* View All Projects Button wrapped in 3D tilt */}
             <Tilt3D maxTilt={8} scale={1.03} className="w-fit mb-6">
-              <a 
-                href="/portfolio"
+              <Link 
+                to="/portfolio"
                 className="group flex items-center px-6 py-3 border border-gray-300 rounded-sm text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white hover:border-black transition-all duration-300"
               >
                 View All Projects
                 <svg className="w-4 h-4 ml-3 transform group-hover:translate-x-1.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path d="M17 8l4 4m0 0l-4 4m4-4H3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
                 </svg>
-              </a>
+              </Link>
             </Tilt3D>
 
             {/* Statistics Row + Inline Icons wrapped in 3D tilt */}
@@ -194,14 +195,14 @@ export default function HomePage() {
         {/* Book a Shoot CTA Card wrapped in 3D Tilt */}
         <Tilt3D maxTilt={8} scale={1.02} className="book-shoot-cta">
           <p className="text-[10px] text-gray-200 uppercase tracking-widest mb-1">Let's Create Your Story</p>
-          <a className="flex items-center justify-start gap-4 group w-fit" href="/booking">
+          <Link className="flex items-center justify-start gap-4 group w-fit" to="/booking">
             <span className="text-white text-lg lg:text-xl font-light">Book a Shoot</span>
             <div className="w-9 h-9 border border-white/30 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-gray-800 transition-all duration-300">
               <svg className="w-4 h-4 text-white group-hover:text-gray-800 transform group-hover:translate-x-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path d="M17 8l4 4m0 0l-4 4m4-4H3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
               </svg>
             </div>
-          </a>
+          </Link>
         </Tilt3D>
       </main>
 

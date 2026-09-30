@@ -6,6 +6,7 @@ import Testimonials from './components/Testimonials';
 import Booking from './components/Booking';
 import Contact from './components/Contact';
 import Portfolio from './components/Portfolio';
+import Showreel from './components/Showreel';
 import CustomCursor from './components/CustomCursor';
 import WhatsAppButton from './components/WhatsAppButton';
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<About />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/showreel" element={<Showreel />} />
         <Route path="/services" element={<Testimonials />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/contact" element={<Contact />} />
