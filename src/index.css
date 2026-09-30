@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 175%;
+  scroll-behavior: smooth;
+}
+
+#home, #portfolio, #about, #showreel, #services, #booking, #contact {
+  scroll-margin-top: 4.5rem;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  overflow-x: hidden;
+}
+
+/* Ensuring exact height and splitting for the hero */
+.hero-container {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  position: relative;
+  background: linear-gradient(to right, #ffffff 70%, #e0e0e0 70%);
+}
+
+/* Stat Dividers */
+.stat-divider {
+  width: 1px;
+  height: 1.5rem;
+  background-color: #e5e7eb;
+  margin: 0 1rem;
+}
+
+/* Precise drone positioning to match reference image */
+.drone-image-wrapper {
+  width: 85%;
+  max-width: 48.75rem;
+  z-index: 10;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Bottom Right CTA styling */
+.book-shoot-cta {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30%;
+  height: 22%;
+  background-color: #909090;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 2.5rem;
+  z-index: 20;
+}
+
+/* About Page Custom Treatments */
+.hero-image-clip {
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+
+.font-signature {
+  font-family: 'Great Vibes', cursive;
+}
+
+.about-stat-divider {
+  border-right: 1px solid #e5e5e5;
+}
+
+@media (max-width: 768px) {
+  .about-stat-divider {
+    border-right: none;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+  .about-stat-divider:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Portfolio Page Custom Grid & Aspect Ratios */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.aspect-landscape {
+  aspect-ratio: 16 / 10;
+}
+
+.aspect-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+/* Video Player UI for Showreel Page */
+.video-overlay-gradient {
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 20%);
+}
+
+.custom-progress-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.custom-progress-inner {
+  height: 100%;
+  background: white;
+  width: 30%;
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: 100%; /* Reset scale on smaller screens to ensure responsive layout fits mobile screens nicely */
+  }
+  .hero-container {
+    grid-template-columns: 100%;
+    background: #ffffff;
+  }
+  .drone-image-wrapper {
+    width: 100%;
+    max-width: none;
+    padding: 20px;
+  }
+  .book-shoot-cta {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 30px;
+  }
+}
+
+/* Continuous gentle float animation for the drone */
+@keyframes droneFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-8px);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+  75% {
+    transform: translateY(-6px);
+  }
+}
+
+.drone-hover-anim {
+  animation: droneFloat 6s ease-in-out infinite;
+}
+
+/* 3D perspective container */
+.perspective-container {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+/* 3D Lift and shadow shift effect for portfolio gallery cards */
+.portfolio-card-3d {
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0);
+}
+
+.portfolio-card-3d:hover {
+  transform: perspective(1000px) rotateX(3deg) rotateY(-3deg) translateZ(10px) scale(1.025);
+  box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.12), 0 10px 20px -10px rgba(0, 0, 0, 0.08);
+  z-index: 30;
+}
+
+/* Custom Cursor propeller animations and hide system cursor rules */
+@keyframes spin-propeller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-propeller-1 {
+  transform-origin: 22px 22px;
+  animation: spin-propeller 0.1s linear infinite;
+}
+.animate-propeller-2 {
+  transform-origin: 78px 22px;
+  animation: spin-propeller 0.1s linear infinite;
+}
+.animate-propeller-3 {
+  transform-origin: 22px 78px;
+  animation: spin-propeller 0.1s linear infinite;
+}
+.animate-propeller-4 {
+  transform-origin: 78px 78px;
+  animation: spin-propeller 0.1s linear infinite;
+}
+
+@media (pointer: fine) {
+  body:not(.disable-custom-cursor),
+  body:not(.disable-custom-cursor) a,
+  body:not(.disable-custom-cursor) button,
+  body:not(.disable-custom-cursor) input,
+  body:not(.disable-custom-cursor) select,
+  body:not(.disable-custom-cursor) textarea,
+  body:not(.disable-custom-cursor) [role="button"],
+  body:not(.disable-custom-cursor) .cursor-pointer {
+    cursor: none !important;
+  }
+}
+
+/* About page image hover transition */
+.about-portrait-img {
+  filter: grayscale(100%);
+  opacity: 0.9;
+  transition: filter 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.group:hover .about-portrait-img,
+.about-portrait-img:hover {
+  filter: grayscale(0%);
+  opacity: 1;
+  transform: scale(1.05);
+}
